@@ -29,12 +29,12 @@ module.exports = sequelize =>
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        likesCounter:
-        {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0,
-        },
+        // likesCounter:
+        // {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     defaultValue: 0,
+        // },
     },
     {
         timestamps: false,

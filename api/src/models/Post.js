@@ -29,24 +29,24 @@ module.exports = sequelize =>
         {
             type: DataTypes.STRING,
         },
-        likesCounter:
-        {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0,
-        },
-        commentsCounter:
-        {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0,
-        },
-        savedCounter:
-        {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0,
-        },
+        // likesCounter:
+        // {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     defaultValue: 0,
+        // },
+        // commentsCounter:
+        // {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     defaultValue: 0,
+        // },
+        // savedCounter:
+        // {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     defaultValue: 0,
+        // },
     },
     {
         // timestamps: false,

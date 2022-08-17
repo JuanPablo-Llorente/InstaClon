@@ -70,6 +70,10 @@ router.get("/post/:id/like", async (req, res, next) => {
             include:
             {
                 model: Like,
+                include:
+                {
+                    model: User,
+                },
             },
         })
         // .catch(e => console.error(e));

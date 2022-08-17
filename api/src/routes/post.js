@@ -2,7 +2,7 @@
 const {Router} = require("express");
 const router = Router();
 // Files
-const {User, Post, Like, Comment} = require("../db");
+const {User, Post, Like, Comment, Saved} = require("../db");
 
 
 //---------------------------------------------------------------- GET -------------------------------------------------------------------
@@ -44,13 +44,20 @@ router.get("/post/:id", async (req, res, next) => {
                 {
                     model: Comment,
                 },
+                {
+                    model: Saved,
+                },
             ],
         })
         // .catch(e => console.error(e));
         
         if(foundPost)
         {
-            res.send(foundPost);
+            const likesCounter = foundPost.Likes ? foundPost.Likes.length : 0;
+            const commentsCounter = foundPost.Comments ? foundPost.Comments.length : 0;
+            const savedCounter = foundPost.Saveds ? foundPost.Saveds.length : 0;
+            
+            res.send({foundPost, likesCounter, commentsCounter, savedCounter});
         }
         else
         {

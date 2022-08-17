@@ -123,41 +123,6 @@ router.post("/post/:id/comment", async (req, res, next) => {
     };
 });
 
-//---------------------------------------------------------------- PUT -------------------------------------------------------------------
-
-router.put("/comment/:id", async (req, res, next) => {
-    const {id} = req.params;
-    const {userId, content} = req.body;
-    
-    try
-    {
-        const foundComment = await Comment.findByPk(id).catch(e => console.error(e));
-        console.log(foundComment);
-        const putVerify = foundComment && foundComment.dataValues.UserId.toString() === userId.toString() ? true : false;
-        
-        if(putVerify)
-        {
-            await Comment.update({
-                content,
-            },
-            {
-                where: {id},
-            });
-            
-            res.send("Comment updated.");
-        }
-        else
-        {
-            res.status(404).send("Cannot update this comment.");
-        };
-    }
-    catch(error)
-    {
-        console.error(error);
-        next();
-    };
-});
-
 //---------------------------------------------------------------- DELETE -------------------------------------------------------------------
 
 router.delete("/comment/:id", async (req, res, next) => {

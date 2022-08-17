@@ -33,17 +33,25 @@ Post.belongsTo(User);
 User.hasMany(Like);
 Like.belongsTo(User);
 
-// Post and Likes
-Post.hasMany(Like);
-Like.belongsTo(Post);
-
 // User and Comments
 User.hasMany(Comment);
 Comment.belongsTo(User);
 
+// User and Saved
+User.hasMany(Saved);
+Saved.belongsTo(User);
+
+// Post and Likes
+Post.hasMany(Like);
+Like.belongsTo(Post);
+
 // Post and Comments
 Post.hasMany(Comment);
 Comment.belongsTo(Post);
+
+// Post and Saved
+Post.hasMany(Saved);
+Saved.belongsTo(Post);
 
 
 
