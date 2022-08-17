@@ -22,7 +22,7 @@ router.post("/register", async (req, res, next) => {
         description,
         birthday,
         country,
-        profilePhoto,
+        // profilePhoto,
         role: definedRole,
     });
     

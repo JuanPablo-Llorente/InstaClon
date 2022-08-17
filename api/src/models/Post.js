@@ -5,13 +5,13 @@ module.exports = sequelize =>
 {
     sequelize.define("Post",
     {
-        id:
-        {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull: false,
-            primaryKey: true,
-        },
+        // id:
+        // {
+        //     type: DataTypes.UUID,
+        //     defaultValue: DataTypes.UUIDV4,
+        //     allowNull: false,
+        //     primaryKey: true,
+        // },
         content:
         {
             type: DataTypes.TEXT,
@@ -24,6 +24,10 @@ module.exports = sequelize =>
         location:
         {
             type: DataTypes.TEXT,
+        },
+        taggedUsers:
+        {
+            type: DataTypes.STRING,
         },
         likesCounter:
         {

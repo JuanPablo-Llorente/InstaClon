@@ -23,11 +23,28 @@ modelSaved(sequelize);
 const {User, Post, Like, Comment, Saved} = sequelize.models;
 
 
+// RELATIONS
+
+// User and Posts
 User.hasMany(Post);
 Post.belongsTo(User);
 
-// Post.hasMany(Like);
-// Like.belongsTo(Post);
+// User and Likes
+User.hasMany(Like);
+Like.belongsTo(User);
+
+// Post and Likes
+Post.hasMany(Like);
+Like.belongsTo(Post);
+
+// User and Comments
+User.hasMany(Comment);
+Comment.belongsTo(User);
+
+// Post and Comments
+Post.hasMany(Comment);
+Comment.belongsTo(Post);
+
 
 
 module.exports =
