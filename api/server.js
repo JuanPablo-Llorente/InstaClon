@@ -9,7 +9,6 @@ const {db} = require("./src/db");
 const routes = require('./src/routes/index.js');
 
 
-
 // Middlewares
 server.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 server.use(bodyParser.json({limit: '50mb'}));
@@ -29,6 +28,6 @@ server.use('/', routes);
 // Server starter
 server.listen(3000, () => {
   console.log("Listening on port 3000");
-  db.sync({force: false})
+  db.sync({force: true})
   .then(console.log("Tables done"));
 });
