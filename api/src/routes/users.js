@@ -2,23 +2,67 @@
 const {Router} = require("express");
 const router = Router();
 // Files
-const {User, Post, Like, Comment, Saved} = require("../db");
+const {User, Post, Like, Comment, Saved, Following, Follower} = require("../db");
 
 
 //---------------------------------------------------------------- GET -------------------------------------------------------------------
 
 router.get("/user", async (req, res, next) => {
+    const {userName} = req.query;
+    
     try
     {
-        const foundUser = await User.findAll();
-        
-        if(foundUser.length)
+        if(userName)
         {
-            res.send(foundUser);
+            const foundUser = await User.findOne({
+                where:
+                {
+                    userName,
+                },
+                include: [
+                    {
+                        model: Post,
+                    },
+                    {
+                        model: Like,
+                    },
+                    {
+                        model: Comment,
+                    },
+                    {
+                        model: Saved,
+                    },
+                    {
+                        model: Following,
+                    },
+                    {
+                        model: Follower,
+                    },
+                ],
+            })
+            .catch(e => console.error(e));
+            
+            if(foundUser)
+            {
+                res.send(foundUser);
+            }
+            else
+            {
+                res.status(404).send("User not found.");
+            };
         }
         else
         {
-            res.status(404).send("No users created.");
+            const foundUser = await User.findAll();
+            
+            if(foundUser.length)
+            {
+                res.send(foundUser);
+            }
+            else
+            {
+                res.status(404).send("No users created.");
+            };
         };
     }
     catch(error)
@@ -47,9 +91,15 @@ router.get("/user/:id", async (req, res, next) => {
                 {
                     model: Saved,
                 },
+                {
+                    model: Following,
+                },
+                {
+                    model: Follower,
+                },
             ],
         })
-        // .catch(e => console.error(e));
+        .catch(e => console.error(e));
         
         if(foundUser)
         {

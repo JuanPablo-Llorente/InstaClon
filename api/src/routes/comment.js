@@ -43,7 +43,7 @@ router.get("/comment/:id", async (req, res, next) => {
                 },
             ],
         })
-        // .catch(e => console.error(e));
+        .catch(e => console.error(e));
         
         if(foundComment)
         {
@@ -72,7 +72,7 @@ router.get("/post/:id/comment", async (req, res, next) => {
                 model: Like,
             },
         })
-        // .catch(e => console.error(e));
+        .catch(e => console.error(e));
         const foundComment = foundPost && foundPost.dataValues.Comment.length ? foundPost.dataValues.Comment : null;
         
         if(foundComment)

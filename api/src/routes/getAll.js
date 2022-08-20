@@ -2,7 +2,7 @@
 const {Router} = require("express");
 const router = Router();
 // Files
-const {User, Post, Like, Comment} = require("../db");
+const {User, Post, Like, Comment, Saved, Following, Follower} = require("../db");
 
 
 //---------------------------------------------------------------- GET -------------------------------------------------------------------
@@ -14,8 +14,11 @@ router.get("/", async (req, res, next) => {
         const Posts = await Post.findAll();
         const Likes = await Like.findAll();
         const Comments = await Comment.findAll();
+        const Saveds = await Saved.findAll();
+        const Followings = await Following.findAll();
+        const Followers = await Follower.findAll();
         
-        res.send({Users, Posts, Likes, Comments});
+        res.send({Users, Posts, Likes, Comments, Saveds, Followings, Followers});
     }
     catch(error)
     {

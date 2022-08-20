@@ -11,7 +11,7 @@ router.post("/register", async (req, res, next) => {
     const {name, userName, email, phone, password, gender, website, description, birthday, country, profilePhoto} = req.body;
     const definedRole = password === "admin" ? "admin" : "user";
     
-    await User.create({
+    const newUser = await User.create({
         name,
         userName,
         email,
@@ -26,7 +26,8 @@ router.post("/register", async (req, res, next) => {
         role: definedRole,
     });
     
-    res.send("User created successfully.");
+    const textResponse = "User created successfully.";
+    res.send(newUser.id);
     
     // const foundUser = await Profile.findAll({
     //     where:

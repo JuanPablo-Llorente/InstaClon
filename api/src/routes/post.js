@@ -49,7 +49,7 @@ router.get("/post/:id", async (req, res, next) => {
                 },
             ],
         })
-        // .catch(e => console.error(e));
+        .catch(e => console.error(e));
         
         if(foundPost)
         {

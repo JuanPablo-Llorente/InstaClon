@@ -28,6 +28,6 @@ server.use('/', routes);
 // Server starter
 server.listen(3000, () => {
   console.log("Listening on port 3000");
-  db.sync({force: true})
+  db.sync({force: false})
   .then(console.log("Tables done"));
 });

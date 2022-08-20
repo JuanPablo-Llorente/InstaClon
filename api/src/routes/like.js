@@ -43,7 +43,7 @@ router.get("/like/:id", async (req, res, next) => {
                 },
             ],
         })
-        // .catch(e => console.error(e));
+        .catch(e => console.error(e));
         
         if(foundLike)
         {
@@ -76,12 +76,12 @@ router.get("/post/:id/like", async (req, res, next) => {
                 },
             },
         })
-        // .catch(e => console.error(e));
-        const foundLikes = foundPost && foundPost.dataValues.Likes.length ? foundPost.dataValues.Likes : null;
+        .catch(e => console.error(e));
+        const foundLike = foundPost && foundPost.dataValues.Likes.length ? foundPost.dataValues.Likes : null;
         
-        if(foundLikes)
+        if(foundLike)
         {
-            res.send(foundLikes);
+            res.send(foundLike);
         }
         else
         {

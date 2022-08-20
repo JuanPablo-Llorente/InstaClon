@@ -5,8 +5,6 @@ const fs = require("fs");
 const path = require("path");
 // Files
 const {DB_USER, DB_PASSWORD, DB_HOST} = process.env;
-
-
 // Models import
 const modelsRoute = path.join(__dirname + "/models");
 const allModels = fs.readdirSync(modelsRoute);
@@ -16,6 +14,7 @@ allModels.forEach(e => {
     const modelRequire = require(path.join(modelsRoute, e));
     models.push(modelRequire);
 });
+
 
 // Sequelize starter
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/instaclon`, {
